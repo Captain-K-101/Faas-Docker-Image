@@ -7,10 +7,12 @@ app = Flask(__name__)
 def add():
     if request.method == 'POST':
         client = docker.from_env()
-        number1 = request.form['one']
+        number1 = request.form['one']#   [2,4,45,2,1]
         number2 = request.form['two']
-        return(client.containers.run("docker.io/library/lol-1",command=[str(number1),str(number2)]))
+        return(client.containers.run("docker.io/library/addc",command=[number1,number2]))
     return "Hello World!"
+
+
 
 @app.route('/sub', methods=['GET', 'POST'])
 def sub():
@@ -25,4 +27,3 @@ def sub():
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=105)
 
-#
