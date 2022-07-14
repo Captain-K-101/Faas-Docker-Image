@@ -1,0 +1,21 @@
+# action.yml
+name: 'Hello World'
+description: 'Greet someone and record the time'
+inputs:
+  number-to-add-1:  # id of input
+    description: '1st number'
+    required: true
+    default: 22
+  number-to-add-2:  # id of input
+      description: '2nd number'
+      required: true
+      default: 44
+outputs:
+  result: # id of output
+    description: 'result of the addition'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.number-to-add-1 }}
+    - ${{ inputs.number-to-add-2 }}
